@@ -1,24 +1,27 @@
 import { useState } from "react";
 
 function App() {
-  const [student, setStudent] = useState({});
-  const getStudent = async () => {
+  const [students, setStudents] = useState([]);
+  const getStudents = async () => {
 
     const response = await fetch("http://localhost:8080/student");
     const data = await response.json();
 
-    setStudent(data);
+    setStudents(data);
   };
 
   return (
     <div className="App">
-      <h1>Student Management System</h1>
+      <h1>Students Management System</h1>
 
-      <h2>Id : {student.id}</h2>
-      <h2>name : {student.name}</h2>
-      <h2>course : {student.course}</h2>
+      {students.map((student) => (
+        <div key={student.id}>
+          <h2>name : {student.name}</h2>
+          <h2>course : {student.course}</h2>
+        </div>
+      ))}
 
-      <button onClick={getStudent}>Get student</button>
+      <button onClick={getStudents}>Get students</button>
 
     </div>
   );

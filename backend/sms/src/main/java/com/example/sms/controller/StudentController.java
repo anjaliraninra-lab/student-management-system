@@ -2,6 +2,7 @@ package com.example.sms.controller;
 
 import com.example.sms.model.Student;
 import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/student")
@@ -9,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 public class StudentController {
 
     @GetMapping
-    public Student getStudent() {
+    public ArrayList<Student> getStudent() {
 
-        return new Student(
-                1,
-                "Tushar",
-                "MCA"
-        );
+        ArrayList<Student> students = new ArrayList<>();
+        students.add(new Student(1, "Rani", "java"));
+        students.add(new Student(2, "Alka", "python"));
+
+        return students; // Return the list of students
     }
 }
